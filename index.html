@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Board</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <p>Personal dashboard</p>
+        <h1>Studio Board</h1>
+        <span>A little space for movies, tasks, and the team.</span>
+      </header>
+
+      <section>
+        <div class="section-heading">
+          <div>
+            <h2>Movie night</h2>
+            <p class="section-note">A few stories to watch.</p>
+          </div>
+        </div>
+        <div id="movies"></div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <div>
+            <h2>Task list</h2>
+            <p class="section-note">Check things off as you go.</p>
+          </div>
+        </div>
+        <div id="tasks"></div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <div>
+            <h2>Our team</h2>
+            <p class="section-note">Meet the people behind the work.</p>
+          </div>
+          <select id="department" aria-label="Filter by department">
+            <option value="all">All departments</option>
+            <option value="Development">Development</option>
+            <option value="Design">Design</option>
+          </select>
+        </div>
+        <div id="members"></div>
+      </section>
+    </main>
+
+    <script type="module">
+      import Movie from "./movie.js";
+      import Task from "./task.js";
+      import Member from "./member.js";
+
+      const movies = [
+        new Movie("The Matrix", "The Wachowskis", 1999, 8.7),
+        new Movie("Toy Story", "John Lasseter", 1995, 7.9)
+      ];
+
+      movies.forEach((movie) => {
+        document.querySelector("#movies").append(movie.render());
+      });
+
+      const tasks = [
+        new Task("Read the brief", "Planning", false),
+        new Task("Finish the project", "Development", false)
+      ];
+
+      tasks.forEach((task) => {
+        document.querySelector("#tasks").append(task.render());
+      });
+
+      const members = [
+        new Member("Alex Morgan", "Developer", "Development", true),
+        new Member("Sam Rivera", "Designer", "Design", false)
+      ];
+
+      function renderMembers() {
+        const department = document.querySelector("#department").value;
+        const memberList = document.querySelector("#members");
+        memberList.replaceChildren();
+
+        members.forEach((member) => {
+          if (department === "all" || member.department === department) {
+            memberList.append(member.render());
+          }
+        });
+      }
+
+      document.querySelector("#department").addEventListener("change", renderMembers);
+      renderMembers();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 48px 20px;
+  background: #f5f2eb;
+  color: #242927;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+main {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
+.hero {
+  margin-bottom: 36px;
+  padding: 34px;
+  border-radius: 20px;
+  background: #253e36;
+  color: #fffdf6;
+}
+
+.hero p {
+  margin: 0 0 10px;
+  color: #bbd5bf;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 8vw, 4.5rem);
+  letter-spacing: -0.06em;
+}
+
+.hero span {
+  display: block;
+  margin-top: 12px;
+  color: #d3ddd4;
+}
+
+section {
+  margin-top: 30px;
+  padding: 26px;
+  border: 1px solid #e8e2d7;
+  border-radius: 18px;
+  background: #fffefa;
+  box-shadow: 0 10px 28px #4038270a;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.section-note {
+  margin: 6px 0 0;
+  color: #81857e;
+  font-size: 0.9rem;
+}
+
+#movies,
+#members {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+#movies > div,
+#members > div {
+  padding: 20px;
+  border: 1px solid #e8e7df;
+  border-radius: 14px;
+  background: #fff;
+}
+
+#movies > div {
+  border-top: 4px solid #c9c4b8;
+}
+
+#movies > div[style*="gold"] {
+  border: 2px solid #dfb64f;
+  background: #fffaf0;
+}
+
+#movies h2,
+#members h2 {
+  margin-bottom: 12px;
+}
+
+#movies p,
+#members p {
+  margin: 7px 0;
+  color: #686e68;
+  font-size: 0.92rem;
+}
+
+#tasks {
+  display: grid;
+  gap: 10px;
+}
+
+#tasks > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid #e8e7df;
+  border-radius: 12px;
+  background: #fff;
+}
+
+#tasks p {
+  margin: 0;
+}
+
+button {
+  flex: 0 0 auto;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #327353;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #e8eee8;
+  color: #54705d;
+  cursor: default;
+}
+
+select {
+  padding: 9px 12px;
+  border: 1px solid #dcd9d0;
+  border-radius: 8px;
+  background: white;
+  color: #242927;
+  font: inherit;
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 22px 14px;
+  }
+
+  .hero,
+  section {
+    padding: 22px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  #tasks > div {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
